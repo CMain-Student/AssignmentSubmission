@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Assignment System</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       
+    </head>
+    <body style="text-align: center"> 
+
+        <div class="container my-2">
+                    <h1>Assignment Submission System</h1>
+        
+            <h2>Assignment List</h2>
+
+            <br>
+            <a th:href="@{/showNewAssignmentForm}" class="btn btn-primary btn-sm mb-3"> Add Assignment</a>
+            <br>
+            <table style="margin-left: auto;margin-right: auto; width: 900px; border: solid 1px; margin-top:30px">
+                <thead>
+                    <tr>
+                        <th> Title</th>
+                        <th> Module</th> 
+                        <th> Date Due</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="assignment : ${listAssignments}">
+                        <td th:text="${assignment.Name}"></td>
+                        <td th:text="${assignment.ModuleName}"></td>        
+                        <td th:text="${assignment.dateOfSubmission}"></td>       
+                        <td>
+                            <!--<a th:href="@{/showFormForUpdate/{id}(id=${assignment.id})}" class="btn btn-primary">Update</a>&nbsp;-->
+                            <a th:href="@{/deleteAssignment/{id}(id=${assignment.id})}" class="btn btn-danger">Delete</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
